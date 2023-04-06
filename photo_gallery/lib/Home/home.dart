@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isLoading = false;
   bool initial = true; //to check if its first data to be loaded on screen
   bool multigrid = true; //to switch betwwen grid views
-  int columnCount = 3; // initial grid column count
+  int columnCount = 2; // initial grid column count
   final ScrollController _controller = ScrollController();
   bool _isEndReached = false;
 
@@ -137,29 +137,13 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Hero(
             tag: 'logo',
             child: Image.asset(
-              'assets/images/logo_icon.jpeg',
+              'assets/images/logo_icon.png',
               fit: BoxFit.fitHeight,
               height: 40,
             ),
           ),
           actions: [
-            IconButton(
-                onPressed: (() {
-                  //grid view is controlled using this button
-                  //grid count interchangable 2<-->3
-                  multigrid = !multigrid;
-                  if (multigrid) {
-                    columnCount = 3;
-                  } else {
-                    columnCount = 2;
-                  }
-                  setState(() {});
-                }),
-                icon: Icon(
-                  multigrid ? Icons.grid_view : Icons.grid_on,
-                  size: 25,
-                  color: Colors.black,
-                ))
+            // use any button to perform actions here
           ],
         ),
         body: RefreshIndicator(
