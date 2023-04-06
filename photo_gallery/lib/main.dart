@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:photo_gallery/UI_Components/fullScreenView.dart';
 import 'package:provider/provider.dart';
 import 'Home/home.dart';
 import 'UI_Components/splashScreen.dart';

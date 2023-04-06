@@ -9,6 +9,7 @@ import 'package:photo_gallery/models/imageModel.dart';
 import 'package:photo_gallery/provider/imageProvider.dart';
 import 'package:photo_gallery/utils/utilities.dart';
 import 'package:provider/provider.dart';
+import 'package:photo_gallery/UI_Components/fullScreenView.dart';
 
 class MyHomePage extends StatefulWidget {
   static const routeName = '/homepage';
@@ -162,6 +163,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () {
                     //routing to detailed view of the thumbnail image
                     // set necessary set up
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => HeroExample(
+                          imageUrl: image.url.toString(),
+                          title: image.author.toString(),
+                          uniqueId: image.uniqueId.toString(),
+                        ),
+                      ),
+                    );
                   },
                   child: Hero(
                     tag: image.uniqueId.toString(),
