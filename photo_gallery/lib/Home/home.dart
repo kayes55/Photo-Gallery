@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:photo_gallery/UI_Components/bookmarks.dart';
 import 'package:photo_gallery/models/imageModel.dart';
 import 'package:photo_gallery/provider/imageProvider.dart';
 import 'package:photo_gallery/utils/utilities.dart';
@@ -133,6 +134,30 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                icon: Icon(
+                  Icons.bookmark_add_rounded,
+                  color: Colors.blue,
+                ),
+                onPressed: () {
+                  // Add navigation to bookmarks page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Bookmarks(
+                        imageUrl: '',
+                        title: '',
+                        uniqueId: '',
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
           toolbarHeight: 70,
           backgroundColor: Colors.white,
           centerTitle: true,
@@ -144,9 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 40,
             ),
           ),
-          actions: [
-            // use any button to perform actions here
-          ],
         ),
         body: RefreshIndicator(
           onRefresh: (() => _fetchImages(true)),

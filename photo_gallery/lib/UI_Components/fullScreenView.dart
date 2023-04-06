@@ -23,44 +23,81 @@ class _HeroExampleState extends State<HeroExample> {
   double imageHeight = 350;
   double imageWidth = 350;
 
+  bool _favBtn = false;
+
   @override
   Widget build(BuildContext context) {
     return ExampleAppBarLayout(
       title: "Photo View",
       showGoBack: true,
       child: Center(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HeroPhotoViewRouteWrapper(
-                  imageProvider: NetworkImage(
-                    widget.imageUrl.toString(),
+        child: Center(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Row(
+                    children: <Widget>[
+                      Spacer(),
+                      Text(
+                        'Bookmark this image',
+                        style: TextStyle(fontFamily: 'Roboto', fontSize: 16),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // do something
+                          _toggle();
+                        },
+                        child: Icon(
+                          Icons.favorite,
+                          color: _favBtn ? Colors.red : Colors.grey,
+                          size: 24.0,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            );
-          },
-          child: Center(
-            child: Hero(
-              tag: widget.uniqueId.toString(),
-              child: CachedNetworkImage(
-                height: imageHeight,
-                width: imageWidth,
-                fit: BoxFit.fitWidth,
-                imageUrl: widget.imageUrl,
-                errorWidget: (context, url, error) => const Icon(
-                  Icons.error,
-                  size: 30,
-                  color: Colors.red,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HeroPhotoViewRouteWrapper(
+                          imageProvider: NetworkImage(
+                            widget.imageUrl.toString(),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Hero(
+                    tag: widget.uniqueId.toString(),
+                    child: CachedNetworkImage(
+                      height: imageHeight,
+                      width: imageWidth,
+                      fit: BoxFit.fitWidth,
+                      imageUrl: widget.imageUrl,
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.error,
+                        size: 30,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _toggle() {
+    setState(() {
+      _favBtn = !_favBtn;
+    });
   }
 }
 
