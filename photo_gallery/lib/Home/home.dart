@@ -193,6 +193,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           imageUrl: image.url.toString(),
                           title: image.author.toString(),
                           uniqueId: image.uniqueId.toString(),
+                          id: image.id.toString(),
+                          width: image.width ?? 0,
+                          height: image.height ?? 0,
                         ),
                       ),
                     );

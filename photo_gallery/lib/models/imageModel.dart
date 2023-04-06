@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class imageModel {
   final String? id;
   final String? author;
@@ -8,4 +10,12 @@ class imageModel {
 
   imageModel(
       {this.id, this.author, this.url, this.width, this.height, this.uniqueId});
+
+  Map<String, String> toJson() {
+    return {
+      'id': id ?? '',
+      'author': author ?? '',
+      'url': url ?? '',
+    };
+  }
 }

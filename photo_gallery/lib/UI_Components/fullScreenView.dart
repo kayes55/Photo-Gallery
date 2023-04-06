@@ -1,19 +1,31 @@
+import 'dart:ffi';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:photo_gallery/models/imageModel.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_gallery/UI_Components/app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:photo_gallery/utils/shared_pref.dart';
 
 class HeroExample extends StatefulWidget {
   static const routeName = '/splash';
   final String imageUrl;
   final String uniqueId;
   final String title;
+  final String id;
+  final int width;
+  final int height;
 
   const HeroExample({
     Key? key,
     required this.imageUrl,
     required this.title,
     required this.uniqueId,
+    required this.id,
+    required this.width,
+    required this.height,
   }) : super(key: key);
   @override
   _HeroExampleState createState() => _HeroExampleState();
@@ -48,6 +60,22 @@ class _HeroExampleState extends State<HeroExample> {
                         onTap: () {
                           // do something
                           _toggle();
+                          SharedPreferenceData.saveData(
+                            imageModel(
+                                id: widget.id,
+                                author: widget.title,
+                                url: widget.imageUrl,
+                                width: widget.width,
+                                height: widget.height),
+                          );
+                          // _bookmarked.add(
+                          //   imageModel(
+                          //       id: widget.id,
+                          //       author: widget.title,
+                          //       url: widget.imageUrl,
+                          //       width: widget.width,
+                          //       height: widget.height),
+                          // );
                         },
                         child: Icon(
                           Icons.favorite,
