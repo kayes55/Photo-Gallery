@@ -6,4 +6,6 @@
 2. The user can tap the photo and can see a full-screen view of the photo
 3. The user has an infinite scroll on the gallery screen
 4. The user can bookmark a photo
+
+##Screen Record
 ![ Alt text](gifPhoto.gif) / ! [](gifPhoto.gif)
