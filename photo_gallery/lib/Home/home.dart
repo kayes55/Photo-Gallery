@@ -10,6 +10,7 @@ import 'package:photo_gallery/provider/imageProvider.dart';
 import 'package:photo_gallery/utils/utilities.dart';
 import 'package:provider/provider.dart';
 import 'package:photo_gallery/UI_Components/fullScreenView.dart';
+import 'package:photo_gallery/utils/keys.dart';
 
 class MyHomePage extends StatefulWidget {
   static const routeName = '/homepage';
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //calling the api
 
           final response = await http.get(Uri.parse(
-              'https://api.unsplash.com/photos?client_id=0uD2LhvZj7F-jEfa9QVklFOs3c6uwBAMtdk0k8_ZCWw&per_page=10&page=$_currentPage'));
+              'https://api.unsplash.com/photos?client_id=${Keys.UNSPLASH_API_CLIENT_ID}&per_page=10&page=$_currentPage'));
           //decoding the json obtained from api
           final jsonData = json.decode(response.body);
           //storing each data from json to a image model which is custom made
