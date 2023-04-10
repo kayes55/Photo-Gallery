@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:photo_gallery/UI_Components/fullScreenView.dart';
 import 'package:provider/provider.dart';
 import 'Home/home.dart';
 import 'UI_Components/splashScreen.dart';
 import 'provider/imageProvider.dart';
 
 void main() {
-  //setting toolbar and system navigationbar colors to white for ui requirements
+  //setting toolbar and system navigation bar colors to white for ui requirements
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarIconBrightness: Brightness.dark,
     statusBarColor: Colors.white,
